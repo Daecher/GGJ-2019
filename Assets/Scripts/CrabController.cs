@@ -26,7 +26,7 @@ public class CrabController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D>();
-		InvokeRepeating("CheckUpright", 0f,3f);
+		InvokeRepeating("MakeUpright", 0f,3f);
 	}
 	
 	// Update is called once per frame
@@ -34,13 +34,19 @@ public class CrabController : MonoBehaviour {
         //CheckGrounded();
         if (CheckGrounded() == true) keepUpright = true;
         else keepUpright = false;
+
         switch (state)
         {
             case (int)State.DO_NOTHING:
+                if (target != null && CloseToTarget() == false) state = (int)State.MOVE;
                 break;
             case (int)State.UPRIGHT:
                 break;
             case (int)State.MOVE:
+                if (CheckUpright() == true && CheckGrounded() == true) MoveTowardsTarget();
+
+                // Check if sponge or mother
+                if (CloseToTarget() == true) state = (int)State.DO_NOTHING;
                 break;
             case (int)State.GATHER:
                 break;
@@ -48,9 +54,10 @@ public class CrabController : MonoBehaviour {
 
 	}
 
-	void CheckUpright()
+	void MakeUpright()
 	{
-		if (transform.up.y < 0.5f && CheckGrounded() == true)
+        Debug.Log(CheckUpright() + " " + CheckGrounded());
+		if (CheckUpright() == false && CheckGrounded() == true)
 		{
             //Debug.Log(transform.eulerAngles.z);
             rb.AddForce(Vector2.up * righting);
@@ -64,9 +71,18 @@ public class CrabController : MonoBehaviour {
 		}
 	}
 
+    bool CheckUpright()
+    {
+        Debug.Log(transform.up.y);
+        if (transform.up.y < 0.75f) return false;
+        else return true;
+    }
+
     bool CheckGrounded()
     {
-        int layerMask = ~(1 << 8);
+        int layerMask = (1 << 8);
+        layerMask |= (1 << 10);
+        layerMask = ~(layerMask);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 0.5f, layerMask);
         if (hit.collider != null && hit.collider.tag == "Ground")
         {
@@ -75,10 +91,35 @@ public class CrabController : MonoBehaviour {
         }
         else if (hit.collider != null)
         {
-            Debug.Log(hit.collider.tag);
+            Debug.Log(hit.collider.name);
             return false;
         }
 
         return false;
+    }
+
+    bool CloseToTarget()
+    {
+        Vector2 dirToTarget = -(transform.position - target.position);
+        Debug.Log(dirToTarget.magnitude);
+        if (dirToTarget.magnitude > 0.5f) return false;
+        else return true;
+
+    }
+
+    void MoveTowardsTarget()
+    {
+        Vector2 dirToTarget = -(transform.position - target.position);
+        rb.velocity = new Vector2(dirToTarget.normalized.x, 0);
+    }
+
+    public void SetTarget(Transform newTarget)
+    {
+        target = newTarget;
+    }
+
+    public Transform GetTarget()
+    {
+        return target;
     }
 }

@@ -8,6 +8,11 @@ public class UnitControl : MonoBehaviour {
 	[SerializeField]
 	int crabCount = 0;
 
+    [SerializeField]
+    List<GameObject> crabUnits;
+
+    public Transform unitSpawn;
+
 	public PlatformEffector2D mouth;
 
 	public GameObject crab;
@@ -24,7 +29,15 @@ public class UnitControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        foreach(GameObject crab in crabUnits)
+        {
+            var crabAI = crab.GetComponent<CrabController>();
+        }
+
 	}
+
+
+
 
 	public void CrabControl(bool intake)
 	{
