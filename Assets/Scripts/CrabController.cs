@@ -50,11 +50,11 @@ public class CrabController : MonoBehaviour {
             case (int)State.MOVE:
                 if (target != null)
                 {
-                    if (closeToTarget == true) Debug.Log(closeToTarget);
+                    //if (closeToTarget == true) Debug.Log(closeToTarget);
                     if (CheckUpright() == true && CheckGrounded() == true && closeToTarget == false) MoveTowardsTarget();
 
                     // Check if sponge or mother
-                    else
+                    else if (closeToTarget == true)
                     {
                         state = (int)State.DO_NOTHING;
                     }
@@ -69,13 +69,13 @@ public class CrabController : MonoBehaviour {
 
 	void MakeUpright()
 	{
-        Debug.Log(CheckUpright() + " " + CheckGrounded());
+        //Debug.Log(CheckUpright() + " " + CheckGrounded());
 		if (CheckUpright() == false && CheckGrounded() == true)
 		{
             //Debug.Log(transform.eulerAngles.z);
             rb.AddForce(Vector2.up * righting);
-            if (transform.eulerAngles.z > 210) rb.AddTorque(righting);
-			else if (transform.eulerAngles.z < 150) rb.AddTorque(-righting);
+            if (transform.eulerAngles.z > 210) rb.AddTorque(righting * 0.8f);
+			else if (transform.eulerAngles.z < 150) rb.AddTorque(-righting * 0.8f);
 			else
 			{
 				rb.AddForce(Vector2.up * righting);
@@ -83,6 +83,12 @@ public class CrabController : MonoBehaviour {
 			}
 		}
 	}
+
+    public void Safe()
+    {
+        state = (int)State.DO_NOTHING;
+        target = null;
+    }
 
     bool CheckUpright()
     {
@@ -97,7 +103,7 @@ public class CrabController : MonoBehaviour {
         layerMask |= (1 << 9);
         layerMask |= (1 << 10);
         layerMask = ~(layerMask);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 0.5f, layerMask);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 0.4f, layerMask);
         if (hit.collider != null && hit.collider.tag == "Ground")
         {
             //Debug.Log("Grounded!");

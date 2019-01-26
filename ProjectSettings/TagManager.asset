@@ -9,6 +9,8 @@ TagManager:
   - Ground
   - Sponge
   - flip
+  - Safe
+  - Suction
   layers:
   - Default
   - TransparentFX

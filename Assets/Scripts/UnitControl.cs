@@ -36,8 +36,13 @@ public class UnitControl : MonoBehaviour {
 
 	}
 
-
-
+    public void MarkSafe(GameObject unit)
+    {
+        if (unit.GetComponent<CrabController>() != null)
+        {
+            unit.GetComponent<CrabController>().Safe();
+        }
+    }
 
 	public void CrabControl(bool intake)
 	{
