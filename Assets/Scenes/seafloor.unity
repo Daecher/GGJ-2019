@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 38069797}
   m_Layer: 0
   m_Name: GroundDummy
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -288,7 +288,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 'Assimilate the crabs!
+
+'
 --- !u!222 &74851502
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -517,7 +519,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 479965066}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.03, y: -1.43, z: 0}
+  m_LocalPosition: {x: 0.03, y: -1.82, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 299481628}
@@ -547,7 +549,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.61, y: 4.09}
+  m_Size: {x: 2.61, y: 5.52}
   m_EdgeRadius: 0
 --- !u!1 &725546135
 GameObject:
@@ -619,7 +621,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Release the crabs!
 --- !u!222 &725546138
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1089,7 +1091,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 83c1cd29003d81047b6d703061dc009e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1109,7 +1111,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1489871565}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.04, y: 0.55, z: 0}
+  m_LocalPosition: {x: 4.004, y: 2.973, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1175,6 +1177,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   righting: 0.2
+  target: {fileID: 0}
+  state: 0
 --- !u!1001 &1533860523
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1256,6 +1260,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.3333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 6981708565974478527, guid: 88c89a1cfeba7064d833571efc1feccf,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88c89a1cfeba7064d833571efc1feccf, type: 3}

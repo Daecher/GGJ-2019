@@ -43,7 +43,7 @@ public class SimpleMovement : MonoBehaviour {
 	void FixedUpdate()
 	{
 		var vel = rb.velocity;
-		vel.x *= 0.98f;
+		vel.x *= 0.925f;
 		vel.y *= 0.925f;
 		if (Mathf.Abs(vel.x) <= 0.15f) vel.x = 0;
 		if (Mathf.Abs(vel.y) <= 0.15f) vel.y = 0;
