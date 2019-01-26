@@ -978,6 +978,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpongeDummy
       objectReference: {fileID: 0}
+    - target: {fileID: 1912212244885202269, guid: 109ced9dbad56aa4ab46c234a09d7759,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 1912212244885202267, guid: 109ced9dbad56aa4ab46c234a09d7759,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -986,7 +991,7 @@ PrefabInstance:
     - target: {fileID: 1912212244885202267, guid: 109ced9dbad56aa4ab46c234a09d7759,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.71
+      value: -2.02
       objectReference: {fileID: 0}
     - target: {fileID: 1912212244885202267, guid: 109ced9dbad56aa4ab46c234a09d7759,
         type: 3}
@@ -1101,6 +1106,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2396370019661911118, guid: 1e8bcb2b8847e9047926276a022df15e,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2396370020021989148, guid: 1e8bcb2b8847e9047926276a022df15e,
         type: 3}
