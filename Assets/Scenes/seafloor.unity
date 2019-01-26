@@ -388,6 +388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxVelocity: 2
+  anim: {fileID: 1164908429}
 --- !u!50 &299481631
 Rigidbody2D:
   serializedVersion: 4
@@ -954,6 +955,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1121916530}
   m_CullTransparentMesh: 0
+--- !u!95 &1164908429 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6981708566605132771, guid: 88c89a1cfeba7064d833571efc1feccf,
+    type: 3}
+  m_PrefabInstance: {fileID: 1533860523}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1164908431 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6981708566605132701, guid: 88c89a1cfeba7064d833571efc1feccf,

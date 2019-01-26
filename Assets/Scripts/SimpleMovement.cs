@@ -6,6 +6,8 @@ public class SimpleMovement : MonoBehaviour {
 	
 	public float maxVelocity = 1f;
 	Rigidbody2D rb;
+    [SerializeField]
+    Animator anim;
 
 	// Use this for initialization
 	void Start () {
@@ -31,15 +33,26 @@ public class SimpleMovement : MonoBehaviour {
 		{
 			if (rb.velocity.y > -maxVelocity) rb.velocity += new Vector2(0, -0.25f);
 		}
-	}
+
+        if (rb.velocity.magnitude > 0.5) anim.SetBool("isSwimming", true);
+        else anim.SetBool("isSwimming", false);
+
+        AdjustOrientation();
+    }
 	
 	void FixedUpdate()
 	{
 		var vel = rb.velocity;
-		vel.x *= 0.925f;
+		vel.x *= 0.98f;
 		vel.y *= 0.925f;
 		if (Mathf.Abs(vel.x) <= 0.15f) vel.x = 0;
 		if (Mathf.Abs(vel.y) <= 0.15f) vel.y = 0;
 		rb.velocity = vel;
 	}
+
+    void AdjustOrientation()
+    {
+        if (rb.velocity.x > 0) transform.localScale = new Vector2(-0.75f, 0.75f);
+        else if (rb.velocity.x < 0) transform.localScale = new Vector2(0.75f, 0.75f);
+    }
 }
