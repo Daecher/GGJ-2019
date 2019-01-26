@@ -11,11 +11,16 @@ public class UnitControl : MonoBehaviour {
     [SerializeField]
     List<GameObject> crabUnits;
 
+    [SerializeField]
+    List<GameObject> resources;
+
     public Transform unitSpawn;
 
 	public PlatformEffector2D mouth;
 
 	public GameObject crab;
+
+    public ResourceSensor rc;
 
 	bool assimilate = false;
 
@@ -29,10 +34,6 @@ public class UnitControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        foreach(GameObject crab in crabUnits)
-        {
-            var crabAI = crab.GetComponent<CrabController>();
-        }
 
 	}
 
@@ -63,6 +64,7 @@ public class UnitControl : MonoBehaviour {
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
+        //Debug.Log("hurr");
 		if (!triggerBodies.Contains(collision) && collision.tag == "Unit") triggerBodies.Add(collision);
 	}
 
@@ -86,5 +88,43 @@ public class UnitControl : MonoBehaviour {
 			col.transform.GetComponent<Rigidbody2D>().AddForce((mouth.transform.position - col.transform.position) * 0.05f);
 		}
 	}
+
+    public void CallUnits()
+    {
+        Debug.Log(crabUnits.Count);
+        foreach(GameObject crab in crabUnits)
+        {
+            crab.GetComponent<CrabController>().SetTarget(this.transform);
+        }
+    }
+
+    public void OrderGatherCrabs()
+    {
+        resources = rc.GetResourcesInRange();
+        int iter = Mathf.Min(resources.Count, crabUnits.Count);
+        Debug.Log(iter);
+        for(int i = 0; i < iter; i++)
+        {
+            var thisSponge = resources[i];
+            var thisCrab = FindClosestCrab(thisSponge.transform.position);
+            thisCrab.GetComponent<CrabController>().SetTarget(thisSponge.transform);
+        }
+    }
+
+    GameObject FindClosestCrab(Vector2 resourcePos)
+    {
+        float dist = -1f;
+        GameObject crab = null;
+        foreach(GameObject thisCrab in crabUnits)
+        {
+            var crabDist = Vector2.Distance(resourcePos, thisCrab.transform.position);
+            if ((dist < 0 || crabDist < dist) && thisCrab.GetComponent<CrabController>().GetTarget() == null)
+            {
+                dist = crabDist;
+                crab = thisCrab;
+            }
+        }
+        return crab;
+    }
 
 }

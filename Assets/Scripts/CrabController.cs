@@ -135,6 +135,7 @@ public class CrabController : MonoBehaviour {
 
     public void SetTarget(Transform newTarget)
     {
+        Debug.Log("new target");
         target = newTarget;
     }
 
