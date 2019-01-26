@@ -1,6 +1,7 @@
 # Unity cache directories
 Temp/
 Library/
+.vs/
 
 # Unity/MonoDevelop generated 
 *.userprefs
@@ -9,3 +10,4 @@ Library/
 *.user
 *.unityproj
 *.bin
+*.cache
