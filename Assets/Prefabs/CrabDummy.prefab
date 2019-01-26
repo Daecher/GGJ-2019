@@ -142,5 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   righting: 0.2
+  moveSpeed: 2
   target: {fileID: 0}
+  closeToTarget: 0
   state: 0

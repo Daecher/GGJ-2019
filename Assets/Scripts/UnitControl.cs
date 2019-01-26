@@ -123,6 +123,12 @@ public class UnitControl : MonoBehaviour {
                 dist = crabDist;
                 crab = thisCrab;
             }
+            else if ((dist < 0 || crabDist < dist) && thisCrab.GetComponent<CrabController>().GetTarget().tag != "Sponge")
+            {
+                thisCrab.GetComponent<CrabController>().SetTarget(null);
+                dist = crabDist;
+                crab = thisCrab;
+            }
         }
         return crab;
     }

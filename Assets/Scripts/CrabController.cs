@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CrabController : MonoBehaviour {
+public class CrabController : MonoBehaviour
+{
 
-	Rigidbody2D rb;
-	public float righting;
+    Rigidbody2D rb;
+    public float righting;
 
     [SerializeField]
     Transform target;
@@ -26,14 +27,16 @@ public class CrabController : MonoBehaviour {
         GATHER
     }
 
-	// Use this for initialization
-	void Start () {
-		rb = GetComponent<Rigidbody2D>();
-		InvokeRepeating("MakeUpright", 0f,3f);
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    // Use this for initialization
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        InvokeRepeating("MakeUpright", 0f, 3f);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         //CheckGrounded();
         if (CheckGrounded() == true) keepUpright = true;
         else keepUpright = false;
@@ -65,24 +68,24 @@ public class CrabController : MonoBehaviour {
                 break;
         }
 
-	}
+    }
 
-	void MakeUpright()
-	{
+    void MakeUpright()
+    {
         //Debug.Log(CheckUpright() + " " + CheckGrounded());
-		if (CheckUpright() == false && CheckGrounded() == true)
-		{
+        if (CheckUpright() == false && CheckGrounded() == true)
+        {
             //Debug.Log(transform.eulerAngles.z);
             rb.AddForce(Vector2.up * righting);
             if (transform.eulerAngles.z > 210) rb.AddTorque(righting * 0.8f);
-			else if (transform.eulerAngles.z < 150) rb.AddTorque(-righting * 0.8f);
-			else
-			{
-				rb.AddForce(Vector2.up * righting);
-				rb.AddTorque(-righting);
-			}
-		}
-	}
+            else if (transform.eulerAngles.z < 150) rb.AddTorque(-righting * 0.8f);
+            else
+            {
+                rb.AddForce(Vector2.up * righting);
+                rb.AddTorque(-righting);
+            }
+        }
+    }
 
     public void Safe()
     {
@@ -92,6 +95,9 @@ public class CrabController : MonoBehaviour {
 
     bool CheckUpright()
     {
+        var vel = rb.velocity;
+        if (Mathf.Abs(vel.x) <= 0.10f) vel.x = 0;
+        if (Mathf.Abs(vel.y) <= 0.10f) vel.y = 0;
         //Debug.Log(transform.up.y);
         if (transform.up.y < 0.75f) return false;
         else return true;
@@ -130,7 +136,9 @@ public class CrabController : MonoBehaviour {
     void MoveTowardsTarget()
     {
         Vector2 dirToTarget = -(transform.position - target.position);
-        rb.velocity = new Vector2(dirToTarget.normalized.x, 0);
+        var moveSpeed = Mathf.Clamp(dirToTarget.x, -1f, 1f);
+        rb.velocity = new Vector2(moveSpeed, 0);
+        AdjustOrientation();
     }
 
     public void SetTarget(Transform newTarget)
@@ -142,5 +150,17 @@ public class CrabController : MonoBehaviour {
     public Transform GetTarget()
     {
         return target;
+    }
+
+    void AdjustOrientation()
+    {
+        if (rb.velocity.x > 0)
+        {
+            transform.localScale = new Vector3(-0.25f, 0.25f, 1f);
+        }
+        else if (rb.velocity.x < 0)
+        {
+            transform.localScale = new Vector3(0.25f, 0.25f, 1f);
+        }
     }
 }
