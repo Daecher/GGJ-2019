@@ -52,7 +52,21 @@ public class SimpleMovement : MonoBehaviour {
 
     void AdjustOrientation()
     {
-        if (rb.velocity.x > 0) transform.localScale = new Vector2(-0.75f, 0.75f);
-        else if (rb.velocity.x < 0) transform.localScale = new Vector2(0.75f, 0.75f);
+        if (rb.velocity.x > 0)
+        {
+            transform.localScale = new Vector3(-0.75f, 0.75f, 1f);
+            foreach(SpriteRenderer sr in GetComponentsInChildren<SpriteRenderer>())
+            {
+                if (sr.tag != "flip") sr.flipX = true;
+            }
+        }
+        else if (rb.velocity.x < 0)
+        {
+            transform.localScale = new Vector3(0.75f, 0.75f, 1f);
+            foreach (SpriteRenderer sr in GetComponentsInChildren<SpriteRenderer>())
+            {
+                if (sr.tag != "flip") sr.flipX = false;
+            }
+        }
     }
 }

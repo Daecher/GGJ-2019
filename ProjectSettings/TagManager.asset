@@ -8,6 +8,7 @@ TagManager:
   - Mouth
   - Ground
   - Sponge
+  - flip
   layers:
   - Default
   - TransparentFX
