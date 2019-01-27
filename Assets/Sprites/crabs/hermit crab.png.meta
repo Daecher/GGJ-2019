@@ -1,0 +1,267 @@
+fileFormatVersion: 2
+guid: be0c83f70c43566448619af7ace69f7f
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: hermit crab_0
+    21300002: hermit crab_1
+    21300004: hermit crab_2
+    21300006: hermit crab_3
+    21300008: hermit crab_4
+    21300010: hermit crab_5
+    21300012: hermit crab_6
+    21300014: hermit crab_7
+  externalObjects: {}
+  serializedVersion: 7
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: hermit crab_0
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 321
+        width: 235
+        height: 167
+      alignment: 9
+      pivot: {x: 0.5575355, y: 0.52991045}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7db29ac96fb384f4189078a21700fe11
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hermit crab_1
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 312
+        width: 153
+        height: 144
+      alignment: 9
+      pivot: {x: 0.5654489, y: 0.5633683}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44aa519c5b2b26747896b25da7db5fcf
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hermit crab_2
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 72
+        width: 127
+        height: 103
+      alignment: 9
+      pivot: {x: 0.20268159, y: 0.8978276}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3e23e8fd0e6c9e4081ce0382138ed90
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hermit crab_3
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 170
+        width: 46
+        height: 68
+      alignment: 9
+      pivot: {x: 0.25406954, y: 0.6098834}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc61eabae931fbb409f05b892a4ce5ab
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hermit crab_4
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 186
+        width: 60
+        height: 70
+      alignment: 9
+      pivot: {x: 0.53688914, y: 0.837275}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a250406da2c6f54294d39ae77a27a68
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hermit crab_5
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 62
+        width: 57
+        height: 115
+      alignment: 9
+      pivot: {x: 0.6682678, y: 0.8977647}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e95a4a32b60ae14796c92261fee94f3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hermit crab_6
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 99
+        width: 90
+        height: 112
+      alignment: 9
+      pivot: {x: 0.81970876, y: 0.7239719}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4edf389d32e24c84b9bd55c3d06a1f30
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hermit crab_7
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 232
+        width: 140
+        height: 84
+      alignment: 9
+      pivot: {x: 0.7875545, y: 0.7004169}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11432b60c1119ca4a856249afff8f374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: dd90b58e114759142a60c25b93f348cf
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
