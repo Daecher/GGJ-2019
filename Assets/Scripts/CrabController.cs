@@ -11,6 +11,8 @@ public class CrabController : MonoBehaviour
     [SerializeField]
     Transform target;
 
+    SpongeController targetController;
+
     [SerializeField]
     bool closeToTarget = false;
 
@@ -41,7 +43,12 @@ public class CrabController : MonoBehaviour
         if (CheckGrounded() == true) keepUpright = true;
         else keepUpright = false;
 
-        if (target != null) closeToTarget = CloseToTarget();
+        if (target != null)
+        {
+            closeToTarget = CloseToTarget();
+            if (target.tag == "Sponge") targetController = target.gameObject.GetComponent<SpongeController>();
+            else targetController = null;
+        }
 
         switch (state)
         {
@@ -54,17 +61,42 @@ public class CrabController : MonoBehaviour
                 if (target != null)
                 {
                     //if (closeToTarget == true) Debug.Log(closeToTarget);
-                    if (CheckUpright() == true && CheckGrounded() == true && closeToTarget == false) MoveTowardsTarget();
+                    //Debug.Log(CheckUpright() + " " + CheckGrounded() + " " + closeToTarget);
+                    if (CheckUpright() == true && CheckGrounded() == true && closeToTarget == false)
+                    {
+                        MoveTowardsTarget();
+                        
+                    }
 
                     // Check if sponge or mother
                     else if (closeToTarget == true)
                     {
-                        state = (int)State.DO_NOTHING;
+                        if (target.tag == "Sponge") state = (int)State.GATHER;
+                        else state = (int)State.DO_NOTHING;
                     }
                 }
                 else state = (int)State.DO_NOTHING;
                 break;
             case (int)State.GATHER:
+                if (target.tag != "Sponge")
+                {
+                    state = (int)State.DO_NOTHING;
+                    break;
+                }
+
+                targetController = target.gameObject.GetComponent<SpongeController>();
+                if (targetController.GetAlive() == true)
+                {
+                    if (targetController.GetEating() == false) targetController.SetEating(true);
+                    targetController.Damage(1f);
+                }
+                else if (targetController.GetAlive() == false)
+                {
+                    target = null;
+                    Debug.Log("Finished eating!");
+                    state = (int)State.DO_NOTHING;
+                }
+
                 break;
         }
 
@@ -109,7 +141,7 @@ public class CrabController : MonoBehaviour
         layerMask |= (1 << 9);
         layerMask |= (1 << 10);
         layerMask = ~(layerMask);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 0.4f, layerMask);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 0.5f, layerMask);
         if (hit.collider != null && hit.collider.tag == "Ground")
         {
             //Debug.Log("Grounded!");
@@ -117,7 +149,7 @@ public class CrabController : MonoBehaviour
         }
         else if (hit.collider != null)
         {
-            //Debug.Log(hit.collider.name);
+            Debug.Log(hit.collider.name);
             return false;
         }
 
@@ -143,7 +175,8 @@ public class CrabController : MonoBehaviour
 
     public void SetTarget(Transform newTarget)
     {
-        Debug.Log("new target");
+        //Debug.Log("new target");
+        if (state == (int)State.GATHER) targetController.SetEating(false);
         target = newTarget;
     }
 

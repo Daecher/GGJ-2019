@@ -102,11 +102,13 @@ public class UnitControl : MonoBehaviour {
     {
         resources = rc.GetResourcesInRange();
         int iter = Mathf.Min(resources.Count, crabUnits.Count);
-        Debug.Log(iter);
+        //Debug.Log(iter);
         for(int i = 0; i < iter; i++)
         {
             var thisSponge = resources[i];
             var thisCrab = FindClosestCrab(thisSponge.transform.position);
+            Debug.Log(thisCrab.GetComponent<CrabController>());
+            Debug.Log(thisSponge.transform);
             thisCrab.GetComponent<CrabController>().SetTarget(thisSponge.transform);
         }
     }
