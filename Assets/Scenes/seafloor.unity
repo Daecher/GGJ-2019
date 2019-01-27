@@ -20,13 +20,13 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.4811321, g: 0.4811321, b: 0.4811321, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 84d9268cf871f2247b08f8a2e75c3edf, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -1143,12 +1143,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13fc9512b2a4f0149b624bb5de634bc3, type: 3}
---- !u!4 &1386968373 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1386968373, guid: 1e8bcb2b8847e9047926276a022df15e,
-    type: 3}
-  m_PrefabInstance: {fileID: 2396370019412979282}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1386968374 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1386968374, guid: 1e8bcb2b8847e9047926276a022df15e,
@@ -1892,18 +1886,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13fc9512b2a4f0149b624bb5de634bc3, type: 3}
---- !u!114 &2122549591 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2122549591, guid: 1e8bcb2b8847e9047926276a022df15e,
-    type: 3}
-  m_PrefabInstance: {fileID: 2396370019412979282}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fab01005effab742ba1b1f72660124e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1584574989456761395
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2114,10 +2096,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1386968373, guid: 1e8bcb2b8847e9047926276a022df15e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.76
-      objectReference: {fileID: 0}
     - target: {fileID: 1386968374, guid: 1e8bcb2b8847e9047926276a022df15e, type: 3}
       propertyPath: crabUnits.Array.data[0]
       value: 
@@ -2134,18 +2112,17 @@ PrefabInstance:
       propertyPath: crabUnits.Array.data[3]
       value: 
       objectReference: {fileID: 314895779}
-    - target: {fileID: 1386968374, guid: 1e8bcb2b8847e9047926276a022df15e, type: 3}
-      propertyPath: suctionTrigger
+    - target: {fileID: 85442664, guid: 1e8bcb2b8847e9047926276a022df15e, type: 3}
+      propertyPath: cam
       value: 
-      objectReference: {fileID: 1386968373}
-    - target: {fileID: 1386968374, guid: 1e8bcb2b8847e9047926276a022df15e, type: 3}
-      propertyPath: rc
-      value: 
-      objectReference: {fileID: 2122549591}
-    - target: {fileID: 1386968374, guid: 1e8bcb2b8847e9047926276a022df15e, type: 3}
-      propertyPath: crab
-      value: 
-      objectReference: {fileID: 1584574990391722238, guid: 13fc9512b2a4f0149b624bb5de634bc3,
-        type: 3}
+      objectReference: {fileID: 319186312}
+    - target: {fileID: 85442664, guid: 1e8bcb2b8847e9047926276a022df15e, type: 3}
+      propertyPath: panSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 85442664, guid: 1e8bcb2b8847e9047926276a022df15e, type: 3}
+      propertyPath: zoomSpeed
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e8bcb2b8847e9047926276a022df15e, type: 3}
