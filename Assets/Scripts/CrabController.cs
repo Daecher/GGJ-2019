@@ -24,6 +24,11 @@ public class CrabController : MonoBehaviour
 
     public Transform motherJelly;
 
+    public Animator anim;
+    public SpriteRenderer energySprite;
+    public SpriteRenderer loveSprite;
+    public SpriteRenderer completeSprite;
+
     bool keepUpright = true;
 
     enum State : int
@@ -39,6 +44,10 @@ public class CrabController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         InvokeRepeating("MakeUpright", 0f, 3f);
+        anim.SetBool("isHiding", true);
+        energySprite.enabled = false;
+        loveSprite.enabled = false;
+        completeSprite.enabled = false;
     }
 
     // Update is called once per frame
@@ -58,13 +67,22 @@ public class CrabController : MonoBehaviour
         switch (state)
         {
             case (int)State.DO_NOTHING:
+                if (anim.GetBool("isWalking") == true) anim.SetBool("isWalking", false);
+                //if (anim.GetBool("isAlerting") == true) anim.SetBool("isAlerting", false);
                 if (target != null && closeToTarget == false) state = (int)State.MOVE;
+                else if (target != null)
+                {
+                    anim.SetBool("isAlerting", true);
+                    EnableEnergyStatus();
+                }
                 break;
             case (int)State.UPRIGHT:
                 break;
             case (int)State.MOVE:
                 if (target != null)
                 {
+                    if (anim.GetBool("isAlerting") == true) anim.SetBool("isAlerting", false);
+                    DisableStatus();
                     //if (closeToTarget == true) Debug.Log(closeToTarget);
                     //Debug.Log(CheckUpright() + " " + CheckGrounded() + " " + closeToTarget);
                     if (CheckUpright() == true && CheckGrounded() == true && closeToTarget == false)
@@ -76,8 +94,16 @@ public class CrabController : MonoBehaviour
                     // Check if sponge or mother
                     else if (closeToTarget == true)
                     {
-                        if (target.tag == "Sponge") state = (int)State.GATHER;
-                        else state = (int)State.DO_NOTHING;
+                        if (target.tag == "Sponge")
+                        {
+                            state = (int)State.GATHER;
+                            anim.SetBool("isGathering", true);
+                            anim.SetBool("isWalking", false);
+                        }
+                        else
+                        {
+                            state = (int)State.DO_NOTHING;
+                        }
                     }
                 }
                 else state = (int)State.DO_NOTHING;
@@ -86,6 +112,7 @@ public class CrabController : MonoBehaviour
                 if (target.tag != "Sponge")
                 {
                     state = (int)State.DO_NOTHING;
+                    anim.SetBool("isGathering", false);
                     break;
                 }
 
@@ -98,14 +125,38 @@ public class CrabController : MonoBehaviour
                 }
                 else if (targetController.GetAlive() == false)
                 {
-                    target = motherJelly;
-                    //Debug.Log("Finished eating!");
-                    state = (int)State.MOVE;
+                    target = null;
+                    Debug.Log("Finished eating!");
+                    state = (int)State.DO_NOTHING;
+                    anim.SetBool("isGathering", false);
+                    anim.SetBool("isAlerting", true);
+                    EnableEnergyStatus();
                 }
 
                 break;
         }
 
+    }
+
+    void DisableStatus()
+    {
+        energySprite.enabled = false;
+        loveSprite.enabled = false;
+        completeSprite.enabled = false;
+    }
+
+    void EnableEnergyStatus()
+    {
+        energySprite.enabled = true;
+        loveSprite.enabled = false;
+        completeSprite.enabled = true;
+    }
+
+    void EnableLoveStatus()
+    {
+        energySprite.enabled = false;
+        loveSprite.enabled = true;
+        completeSprite.enabled = true;
     }
 
     void MakeUpright()
@@ -128,6 +179,8 @@ public class CrabController : MonoBehaviour
     public void Safe()
     {
         state = (int)State.DO_NOTHING;
+        anim.SetBool("isAlerting", false);
+        DisableStatus();
         target = null;
     }
 
@@ -151,14 +204,16 @@ public class CrabController : MonoBehaviour
         if (hit.collider != null && hit.collider.tag == "Ground")
         {
             //Debug.Log("Grounded!");
+            anim.SetBool("isHiding", false);
             return true;
         }
         else if (hit.collider != null)
         {
             //Debug.Log(hit.collider.name);
+            anim.SetBool("isHiding", true);
             return false;
         }
-
+        anim.SetBool("isHiding", true);
         return false;
     }
 
@@ -173,6 +228,7 @@ public class CrabController : MonoBehaviour
 
     void MoveTowardsTarget()
     {
+        if (anim.GetBool("isWalking") == false) anim.SetBool("isWalking", true);
         Vector2 dirToTarget = -(transform.position - target.position);
         var moveSpeed = Mathf.Clamp(dirToTarget.x, -1f, 1f);
         rb.velocity = new Vector2(moveSpeed, 0);
