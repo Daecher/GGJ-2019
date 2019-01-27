@@ -27,6 +27,6 @@ public class CameraController : MonoBehaviour
         {
             currentZoom -= zoom;
         }
-        if (currentZoom > 4f && currentZoom < 15f) cam.orthographicSize = currentZoom;
+        if (currentZoom > 3f && currentZoom < 15f) cam.orthographicSize = currentZoom;
     }
 }
