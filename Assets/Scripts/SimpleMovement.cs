@@ -9,35 +9,43 @@ public class SimpleMovement : MonoBehaviour {
     [SerializeField]
     Animator anim;
 
-	// Use this for initialization
-	void Start () {
+    public List<GameObject> controlButtons;
+    public List<GameObject> deathButtons;
+
+    bool dead = false;
+
+    // Use this for initialization
+    void Start () {
 		rb = GetComponent<Rigidbody2D>();
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey("d"))
-		{
-			if (rb.velocity.x < maxVelocity) rb.velocity += new Vector2(0.25f, 0);
-		}
-		if (Input.GetKey("a"))
-		{
-			if (rb.velocity.x > -maxVelocity) rb.velocity += new Vector2(-0.25f, 0);
-		}
-		if (Input.GetKey("w"))
-		{
-			if (rb.velocity.y < maxVelocity) rb.velocity += new Vector2(0, 0.25f);
-		}
-		if (Input.GetKey("s"))
-		{
-			if (rb.velocity.y > -maxVelocity) rb.velocity += new Vector2(0, -0.25f);
-		}
+        if (dead == false)
+        {
+            if (Input.GetKey("d"))
+            {
+                if (rb.velocity.x < maxVelocity) rb.velocity += new Vector2(0.25f, 0);
+            }
+            if (Input.GetKey("a"))
+            {
+                if (rb.velocity.x > -maxVelocity) rb.velocity += new Vector2(-0.25f, 0);
+            }
+            if (Input.GetKey("w"))
+            {
+                if (rb.velocity.y < maxVelocity) rb.velocity += new Vector2(0, 0.25f);
+            }
+            if (Input.GetKey("s"))
+            {
+                if (rb.velocity.y > -maxVelocity) rb.velocity += new Vector2(0, -0.25f);
+            }
 
-        if (rb.velocity.magnitude > 0.5) anim.SetBool("isSwimming", true);
-        else anim.SetBool("isSwimming", false);
+            if (rb.velocity.magnitude > 0.5) anim.SetBool("isSwimming", true);
+            else anim.SetBool("isSwimming", false);
 
-        AdjustOrientation();
+            AdjustOrientation();
+        }
     }
 	
 	void FixedUpdate()
@@ -52,7 +60,7 @@ public class SimpleMovement : MonoBehaviour {
 
     void AdjustOrientation()
     {
-        if (rb.velocity.x > 0)
+        if (rb.velocity.x > 0.05)
         {
             transform.localScale = new Vector3(-0.75f, 0.75f, 1f);
             foreach(SpriteRenderer sr in GetComponentsInChildren<SpriteRenderer>())
@@ -60,7 +68,7 @@ public class SimpleMovement : MonoBehaviour {
                 if (sr.tag != "flip") sr.flipX = true;
             }
         }
-        else if (rb.velocity.x < 0)
+        else if (rb.velocity.x < 0.05)
         {
             transform.localScale = new Vector3(0.75f, 0.75f, 1f);
             foreach (SpriteRenderer sr in GetComponentsInChildren<SpriteRenderer>())
@@ -68,5 +76,19 @@ public class SimpleMovement : MonoBehaviour {
                 if (sr.tag != "flip") sr.flipX = false;
             }
         }
+    }
+
+    public void Die()
+    {
+        foreach (GameObject button in controlButtons)
+        {
+            button.SetActive(false);
+        }
+        foreach (GameObject button in deathButtons)
+        {
+            button.SetActive(true);
+        }
+
+        dead = true;
     }
 }

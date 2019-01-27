@@ -105,34 +105,42 @@ public class UnitControl : MonoBehaviour {
         //Debug.Log(iter);
         for(int i = 0; i < iter; i++)
         {
+            
             var thisSponge = resources[i];
             var thisCrab = FindClosestCrab(thisSponge.transform.position);
-            //Debug.Log(thisCrab.GetComponent<CrabController>());
+            var cont = thisCrab.GetComponent<CrabController>();
+            //Debug.Log(thisCrab);
             //Debug.Log(thisSponge.transform);
-            thisCrab.GetComponent<CrabController>().SetTarget(thisSponge.transform);
+            cont.SetTarget(thisSponge.transform);
         }
     }
 
     GameObject FindClosestCrab(Vector2 resourcePos)
     {
         float dist = -1f;
-        GameObject crab = null;
         foreach(GameObject thisCrab in crabUnits)
         {
+            //Debug.Log(crabUnits.Count);
             var crabDist = Vector2.Distance(resourcePos, thisCrab.transform.position);
             if ((dist < 0 || crabDist < dist) && thisCrab.GetComponent<CrabController>().GetTarget() == null)
             {
+                //Debug.Log("no target");
                 dist = crabDist;
-                crab = thisCrab;
+                var crab = thisCrab;
+                return crab;
             }
-            else if ((dist < 0 || crabDist < dist) && thisCrab.GetComponent<CrabController>().GetTarget().tag != "Sponge")
+            else if ((dist < 0 || crabDist < dist) && thisCrab.GetComponent<CrabController>().GetTarget().tag != null)
             {
-                thisCrab.GetComponent<CrabController>().SetTarget(null);
+                //Debug.Log("target");
+                //thisCrab.GetComponent<CrabController>().SetTarget(null);
                 dist = crabDist;
-                crab = thisCrab;
+                var crab = thisCrab;
+                return crab;
             }
         }
-        return crab;
+        return null;
     }
+
+    
 
 }
