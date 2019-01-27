@@ -32,7 +32,7 @@ public class PopulateTerrain : MonoBehaviour
         {
             int random = Random.Range(0, front_objects.Count + 5);
             if (random < front_objects.Count) Instantiate(front_objects[random], t.position, Quaternion.Euler(0f, 0f, 0f), t);
-            Debug.Log("This plant is " + random);
+            //Debug.Log("This plant is " + random);
         }
 
         foreach(Transform t in GroundSpawns)
@@ -43,7 +43,7 @@ public class PopulateTerrain : MonoBehaviour
             else if (random <= 35) Instantiate(ground_objects[2], t.position, Quaternion.Euler(0f, 0f, 0f), t);
             else if (random <= 40) Instantiate(ground_objects[3], t.position, Quaternion.Euler(0f, 0f, 0f), t);
             else if (random <= 45) Instantiate(ground_objects[4], t.position, Quaternion.Euler(0f, 0f, 0f), t);
-            Debug.Log("This ground object is " + random);
+            //Debug.Log("This ground object is " + random);
         }
     }
 }

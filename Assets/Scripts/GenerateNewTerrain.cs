@@ -6,8 +6,11 @@ public class GenerateNewTerrain : MonoBehaviour
 {
     public List<GameObject> plantPrefabs;
     public List<GameObject> groundPrefabs;
+    public List<GameObject> startingTerrain;
     public GameObject terrain;
     public Transform terrainHolder;
+
+    public BoxCollider2D ground_collider;
 
     [SerializeField]
     float previousXmin = 0;
@@ -25,7 +28,12 @@ public class GenerateNewTerrain : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        foreach(GameObject ter in startingTerrain)
+        {
+            ter.GetComponent<PopulateTerrain>().Populate(plantPrefabs, groundPrefabs);
+        }
+
+        UpdateCollider();
     }
 
     // Update is called once per frame
@@ -45,18 +53,27 @@ public class GenerateNewTerrain : MonoBehaviour
             GenerateLeftTerrain();
             leftTerrain++;
         }
+        
     }
 
     void GenerateLeftTerrain()
     {
         var ter = Instantiate(terrain, new Vector3((leftTerrain + 1) * -5.12f, 0f, 0f), Quaternion.Euler(0f,0f,0f), terrainHolder);
         ter.GetComponent<PopulateTerrain>().Populate(plantPrefabs, groundPrefabs);
+        UpdateCollider();
     }
     
     void GenerateRightTerrain()
     {
         var ter = Instantiate(terrain, new Vector3((rightTerrain) * 5.12f, 0f, 0f), Quaternion.Euler(0f, 0f, 0f), terrainHolder);
         ter.GetComponent<PopulateTerrain>().Populate(plantPrefabs, groundPrefabs);
+        UpdateCollider();
+    }
+
+    void UpdateCollider()
+    {
+        ground_collider.size = new Vector2(5.12f * (2 * (Mathf.Max(leftTerrain, rightTerrain) + 2)), 1f);
+        
     }
 
 }
