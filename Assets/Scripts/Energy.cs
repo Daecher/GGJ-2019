@@ -31,4 +31,9 @@ public class Energy : MonoBehaviour
         if (energy < 10 && anim.GetBool("isSick") == false) anim.SetBool("isSick", true);
         else if (energy > 10 && anim.GetBool("isSick") == true) anim.SetBool("isSick", false);
     }
+
+    public void AddEnergy(float en)
+    {
+        energy += en;
+    }
 }

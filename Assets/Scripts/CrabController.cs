@@ -9,6 +9,9 @@ public class CrabController : MonoBehaviour
     public float righting;
 
     [SerializeField]
+    float foodConsumed;
+
+    [SerializeField]
     Transform target;
 
     SpongeController targetController;
@@ -18,6 +21,8 @@ public class CrabController : MonoBehaviour
 
     [SerializeField]
     int state = 0;
+
+    public Transform motherJelly;
 
     bool keepUpright = true;
 
@@ -89,12 +94,13 @@ public class CrabController : MonoBehaviour
                 {
                     if (targetController.GetEating() == false) targetController.SetEating(true);
                     targetController.Damage(1f);
+                    foodConsumed += 1f;
                 }
                 else if (targetController.GetAlive() == false)
                 {
-                    target = null;
-                    Debug.Log("Finished eating!");
-                    state = (int)State.DO_NOTHING;
+                    target = motherJelly;
+                    //Debug.Log("Finished eating!");
+                    state = (int)State.MOVE;
                 }
 
                 break;
@@ -141,7 +147,7 @@ public class CrabController : MonoBehaviour
         layerMask |= (1 << 9);
         layerMask |= (1 << 10);
         layerMask = ~(layerMask);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 0.5f, layerMask);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 0.35f, layerMask);
         if (hit.collider != null && hit.collider.tag == "Ground")
         {
             //Debug.Log("Grounded!");
@@ -149,7 +155,7 @@ public class CrabController : MonoBehaviour
         }
         else if (hit.collider != null)
         {
-            Debug.Log(hit.collider.name);
+            //Debug.Log(hit.collider.name);
             return false;
         }
 
@@ -195,5 +201,12 @@ public class CrabController : MonoBehaviour
         {
             transform.localScale = new Vector3(0.25f, 0.25f, 1f);
         }
+    }
+
+    public float giveFood()
+    {
+        var food = foodConsumed;
+        foodConsumed = 0;
+        return food;
     }
 }

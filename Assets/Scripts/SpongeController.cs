@@ -22,7 +22,7 @@ public class SpongeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (health < 0 && alive == true)
+        if (health <= 0 && alive == true)
         {
             alive = false;
             anim.SetBool("isEating", false);

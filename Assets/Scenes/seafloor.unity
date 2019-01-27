@@ -522,7 +522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energy: 20
-  energyDrain: 0
+  energyDrain: 1
   anim: {fileID: 462320765}
 --- !u!4 &532892703 stripped
 Transform:
@@ -904,6 +904,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: terrian
       objectReference: {fileID: 0}
+    - target: {fileID: 4617151657363432600, guid: 8bb54dba532416141b2077792f8bd824,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4617151657363432603, guid: 8bb54dba532416141b2077792f8bd824,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1242,6 +1247,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1584574990391722209, guid: 13fc9512b2a4f0149b624bb5de634bc3,
+        type: 3}
+      propertyPath: motherJelly
+      value: 
+      objectReference: {fileID: 1566378455}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13fc9512b2a4f0149b624bb5de634bc3, type: 3}
 --- !u!114 &1386968374 stripped
@@ -1463,6 +1473,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1530430304}
   m_CullTransparentMesh: 0
+--- !u!4 &1566378455 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1386968373, guid: 1e8bcb2b8847e9047926276a022df15e,
+    type: 3}
+  m_PrefabInstance: {fileID: 2396370019412979282}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1658456750
 GameObject:
   m_ObjectHideFlags: 0
@@ -1616,6 +1632,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1584574990391722209, guid: 13fc9512b2a4f0149b624bb5de634bc3,
+        type: 3}
+      propertyPath: motherJelly
+      value: 
+      objectReference: {fileID: 1566378455}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13fc9512b2a4f0149b624bb5de634bc3, type: 3}
 --- !u!1 &1683796492
@@ -1995,6 +2016,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1584574990391722209, guid: 13fc9512b2a4f0149b624bb5de634bc3,
+        type: 3}
+      propertyPath: motherJelly
+      value: 
+      objectReference: {fileID: 1566378455}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13fc9512b2a4f0149b624bb5de634bc3, type: 3}
 --- !u!1001 &1584574989456761395
@@ -2064,6 +2090,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1584574990391722209, guid: 13fc9512b2a4f0149b624bb5de634bc3,
+        type: 3}
+      propertyPath: motherJelly
+      value: 
+      objectReference: {fileID: 1566378455}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13fc9512b2a4f0149b624bb5de634bc3, type: 3}
 --- !u!1001 &1912212244504898767
@@ -2227,6 +2258,10 @@ PrefabInstance:
       propertyPath: crabUnits.Array.data[3]
       value: 
       objectReference: {fileID: 314895779}
+    - target: {fileID: 1386968374, guid: 1e8bcb2b8847e9047926276a022df15e, type: 3}
+      propertyPath: en
+      value: 
+      objectReference: {fileID: 462320766}
     - target: {fileID: 85442664, guid: 1e8bcb2b8847e9047926276a022df15e, type: 3}
       propertyPath: cam
       value: 

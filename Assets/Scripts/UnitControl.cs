@@ -15,12 +15,10 @@ public class UnitControl : MonoBehaviour {
     List<GameObject> resources;
 
     public Transform unitSpawn;
-
 	public PlatformEffector2D mouth;
-
 	public GameObject crab;
-
     public ResourceSensor rc;
+    public Energy en;
 
 	bool assimilate = false;
 
@@ -42,6 +40,7 @@ public class UnitControl : MonoBehaviour {
         if (unit.GetComponent<CrabController>() != null)
         {
             unit.GetComponent<CrabController>().Safe();
+            en.AddEnergy(unit.GetComponent<CrabController>().giveFood());
         }
     }
 
@@ -107,8 +106,8 @@ public class UnitControl : MonoBehaviour {
         {
             var thisSponge = resources[i];
             var thisCrab = FindClosestCrab(thisSponge.transform.position);
-            Debug.Log(thisCrab.GetComponent<CrabController>());
-            Debug.Log(thisSponge.transform);
+            //Debug.Log(thisCrab.GetComponent<CrabController>());
+            //Debug.Log(thisSponge.transform);
             thisCrab.GetComponent<CrabController>().SetTarget(thisSponge.transform);
         }
     }
