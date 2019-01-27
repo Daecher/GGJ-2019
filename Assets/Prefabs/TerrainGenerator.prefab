@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &32707878409396484
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 32707878409396485}
+  - component: {fileID: 32707878409396486}
+  m_Layer: 0
+  m_Name: TerrainGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &32707878409396485
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32707878409396484}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 3.76, z: 10}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &32707878409396486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32707878409396484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ae0e0cc900350d4db2eac8c2e0102c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plantPrefabs:
+  - {fileID: 2743805903585203306, guid: d7b86acf0721aa64c8b4dfa88a97ca2e, type: 3}
+  - {fileID: 1920825501703492425, guid: 67dd6f261c192234a9dd25a61b948998, type: 3}
+  - {fileID: 3943893993182640316, guid: 01c98a4267684694b91d1125459bffc0, type: 3}
+  - {fileID: 1108769964782738853, guid: 88fe646912808f946bf514b229f4920a, type: 3}
+  - {fileID: 8165394916978565984, guid: f50155adbce6fb8459a9c70dfeb139e1, type: 3}
+  - {fileID: 3663644137133907889, guid: 2c6d9d6ec6382be4caeffbc9aa2e1f28, type: 3}
+  - {fileID: 4865004992786955614, guid: 5835b70df2aa91243ac46354621af398, type: 3}
+  - {fileID: 6729535293802722417, guid: 50872a7510bac0248b6740aa27f0d5ad, type: 3}
+  - {fileID: 3696875060110233145, guid: 6174fd4d1361917468f0e244bbe71db2, type: 3}
+  - {fileID: 6911210760871998, guid: 34ef2c0d0638d804c99eaef120e53cd6, type: 3}
+  groundPrefabs:
+  - {fileID: 1912212244885202269, guid: 109ced9dbad56aa4ab46c234a09d7759, type: 3}
+  - {fileID: 1584574990391722238, guid: 13fc9512b2a4f0149b624bb5de634bc3, type: 3}
+  - {fileID: 331900530755721671, guid: 0e7d400ccd2a3b64ca3a09b23019b48b, type: 3}
+  - {fileID: 8069892051082701926, guid: 1920c61ed7cc99a47ac843e3d1f1f5ab, type: 3}
+  - {fileID: 8208840831144330171, guid: 4b925702ffa0a0842996a78e6547604a, type: 3}
+  terrain: {fileID: 617185808150044844, guid: 336e9570b805bf546b4c2a655a267bf6, type: 3}
+  terrainHolder: {fileID: 0}
+  previousXmin: 0
+  previousXMax: 0
+  leftTerrain: 0
+  rightTerrain: 0

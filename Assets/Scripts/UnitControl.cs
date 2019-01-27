@@ -41,6 +41,7 @@ public class UnitControl : MonoBehaviour {
         {
             unit.GetComponent<CrabController>().Safe();
             en.AddEnergy(unit.GetComponent<CrabController>().giveFood());
+            if (!crabUnits.Contains(unit)) crabUnits.Add(unit);
         }
     }
 

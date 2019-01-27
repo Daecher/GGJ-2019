@@ -26,7 +26,12 @@ public class CameraController : MonoBehaviour
         if (zoom != 0)
         {
             currentZoom -= zoom;
+            
         }
-        if (currentZoom > 3f && currentZoom < 15f) cam.orthographicSize = currentZoom;
+        if (currentZoom > 3f && currentZoom < 15f)
+        {
+            cam.orthographicSize = currentZoom;
+            cam.transform.Translate(Vector3.up * -zoom);
+        }
     }
 }
