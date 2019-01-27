@@ -11,6 +11,7 @@ TagManager:
   - flip
   - Safe
   - Suction
+  - Jelly
   layers:
   - Default
   - TransparentFX

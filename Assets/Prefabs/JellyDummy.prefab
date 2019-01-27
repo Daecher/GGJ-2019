@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
+  panSpeed: 0
+  zoomSpeed: 0
 --- !u!1 &1386968372
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,6 +101,7 @@ MonoBehaviour:
   mouth: {fileID: 2396370020021989122}
   crab: {fileID: 1584574990391722238, guid: 13fc9512b2a4f0149b624bb5de634bc3, type: 3}
   rc: {fileID: 2122549591}
+  en: {fileID: 0}
   triggerBodies: []
 --- !u!61 &1386968375
 BoxCollider2D:
@@ -202,7 +205,7 @@ GameObject:
   - component: {fileID: 2396370019661911117}
   m_Layer: 0
   m_Name: JellyDummy
-  m_TagString: Untagged
+  m_TagString: Jelly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -285,6 +288,7 @@ MonoBehaviour:
   mouth: {fileID: 2396370020021989122}
   crab: {fileID: 0}
   rc: {fileID: 0}
+  en: {fileID: 0}
   triggerBodies: []
 --- !u!50 &2396370019661911117
 Rigidbody2D:
@@ -514,6 +518,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5745768785499959756, guid: 88c89a1cfeba7064d833571efc1feccf,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6981708566453879019, guid: 88c89a1cfeba7064d833571efc1feccf,
         type: 3}
       propertyPath: m_TagString
@@ -524,15 +533,29 @@ PrefabInstance:
       propertyPath: m_TagString
       value: flip
       objectReference: {fileID: 0}
-    - target: {fileID: 6981708565903844983, guid: 88c89a1cfeba7064d833571efc1feccf,
-        type: 3}
+    - target: {fileID: 1432014507, guid: 88c89a1cfeba7064d833571efc1feccf, type: 3}
       propertyPath: m_TagString
       value: flip
       objectReference: {fileID: 0}
-    - target: {fileID: 6981708565974478527, guid: 88c89a1cfeba7064d833571efc1feccf,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
+    - target: {fileID: 1383692525, guid: 88c89a1cfeba7064d833571efc1feccf, type: 3}
+      propertyPath: m_TagString
+      value: flip
+      objectReference: {fileID: 0}
+    - target: {fileID: 1899654473, guid: 88c89a1cfeba7064d833571efc1feccf, type: 3}
+      propertyPath: m_TagString
+      value: flip
+      objectReference: {fileID: 0}
+    - target: {fileID: 220120233, guid: 88c89a1cfeba7064d833571efc1feccf, type: 3}
+      propertyPath: m_TagString
+      value: flip
+      objectReference: {fileID: 0}
+    - target: {fileID: 830492778, guid: 88c89a1cfeba7064d833571efc1feccf, type: 3}
+      propertyPath: m_TagString
+      value: flip
+      objectReference: {fileID: 0}
+    - target: {fileID: 786858100, guid: 88c89a1cfeba7064d833571efc1feccf, type: 3}
+      propertyPath: m_TagString
+      value: flip
       objectReference: {fileID: 0}
     - target: {fileID: 6981708566422141220, guid: 88c89a1cfeba7064d833571efc1feccf,
         type: 3}
@@ -544,34 +567,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: bodyglow
       objectReference: {fileID: 0}
-    - target: {fileID: 5745768785499959756, guid: 88c89a1cfeba7064d833571efc1feccf,
+    - target: {fileID: 6981708565903844983, guid: 88c89a1cfeba7064d833571efc1feccf,
         type: 3}
-      propertyPath: m_Enabled
+      propertyPath: m_TagString
+      value: flip
+      objectReference: {fileID: 0}
+    - target: {fileID: 6981708565974478527, guid: 88c89a1cfeba7064d833571efc1feccf,
+        type: 3}
+      propertyPath: m_SortingOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 220120233, guid: 88c89a1cfeba7064d833571efc1feccf, type: 3}
-      propertyPath: m_TagString
-      value: flip
-      objectReference: {fileID: 0}
-    - target: {fileID: 786858100, guid: 88c89a1cfeba7064d833571efc1feccf, type: 3}
-      propertyPath: m_TagString
-      value: flip
-      objectReference: {fileID: 0}
-    - target: {fileID: 830492778, guid: 88c89a1cfeba7064d833571efc1feccf, type: 3}
-      propertyPath: m_TagString
-      value: flip
-      objectReference: {fileID: 0}
-    - target: {fileID: 1383692525, guid: 88c89a1cfeba7064d833571efc1feccf, type: 3}
-      propertyPath: m_TagString
-      value: flip
-      objectReference: {fileID: 0}
-    - target: {fileID: 1432014507, guid: 88c89a1cfeba7064d833571efc1feccf, type: 3}
-      propertyPath: m_TagString
-      value: flip
-      objectReference: {fileID: 0}
-    - target: {fileID: 1899654473, guid: 88c89a1cfeba7064d833571efc1feccf, type: 3}
-      propertyPath: m_TagString
-      value: flip
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88c89a1cfeba7064d833571efc1feccf, type: 3}
